@@ -1,0 +1,101 @@
+# InterBar 2.0 - InterTime (Spigot/Paper 1.16.5 і новіші)
+#
+# Кольори: &a  |  &#RRGGBB  |  градієнт <g:#від:#до>текст</g>  (з :b в кінці - жирний)
+# Плейсхолдери: %player% %rank% %balance% %ether% %hours% %playtime% %ping% %kills% %deaths%
+#               %kdr% %mobkills% %online% %max% %world% %time% %date% %tps% %health%
+#               %server% (назва сервера)  %link% (посилання)
+# Якщо стоїть PlaceholderAPI - його плейсхолдери теж працюють.
+
+update-ticks: 10
+
+server-name: "<g:#e040fb:#7c4dff:b>ɪɴᴛᴇʀᴛɪᴍᴇ</g>"
+server-link: "<g:#e040fb:#7c4dff:b>MYSERVER.NET</g>"
+
+# ============================ СКОРБОРД СПРАВА ============================
+# Пункти (сторінки) змінюють один одного. Сторінки: page-1, page-2, page-3 ... (до 15 рядків кожна)
+sidebar:
+  enabled: true
+  switch-seconds: 6
+  title: "<g:#f06bff:#7c4dff:b>✦ АНАРХІЯ-1 ✦</g>"
+
+  # Пункт 1: профіль
+  page-1:
+    - " "
+    - "&d▍ &fГравець"
+    - "&7  Нік: &f%player%"
+    - "&7  Ранг: &f%rank%"
+    - "&7  Баланс: &a%balance% $"
+    - "&7  Ефіри: &d%ether% ✦"
+    - " "
+    - "%link%"
+
+  # Пункт 2: статистика
+  page-2:
+    - " "
+    - "&d▍ &fСтатистика"
+    - "&7  В/С: &a%kills%&7/&c%deaths%"
+    - "&7  Зіграно: &f%hours% год"
+    - "&7  Пінг: &e%ping% ms"
+    - " "
+    - "%server%"
+
+# ============================ БОССБАР ============================
+bossbar:
+  enabled: true
+  interval: 10          # секунд на одне повідомлення
+  # color: PINK BLUE RED GREEN YELLOW PURPLE WHITE
+  # style: SOLID SEGMENTED_6 SEGMENTED_10 SEGMENTED_12 SEGMENTED_20
+  messages:
+    - text: "<g:#f06bff:#7c4dff:b>Ласкаво просимо на АНАРХІЯ-1, %player%!</g>"
+      color: PURPLE
+      style: SOLID
+    - text: "&dГрай у казино: &f/casino"
+      color: PINK
+      style: SEGMENTED_10
+    - text: "&dОнлайн: &f%online%&7/&f%max% &8| &dПінг: &f%ping% ms"
+      color: PURPLE
+      style: SEGMENTED_12
+    - text: "&dНалаштування панелей: &f/bar"
+      color: PURPLE
+      style: SEGMENTED_6
+
+# ============================ TAB ============================
+tab:
+  enabled: true
+  sort-by-rank: true     # сортування гравців за рангом і префікс над головою
+  header:
+    - " "
+    - "%server%"
+    - "&7Онлайн: &f%online%&7/&f%max%"
+    - " "
+  footer:
+    - " "
+    - "&7Пінг: &a%ping% ms &8| &7TPS: &a%tps%"
+    - "%link%"
+    - " "
+
+# ============================ РАНГИ ============================
+# Перший збіг за правом (permission) виграє. Останній ранг має бути без права.
+# Видати ранг через LuckPerms: /lp user Нік permission set intertime.bar.rank.vip
+# display - як ранг виглядає, color - колір ніка (RED, AQUA, YELLOW, GRAY ...)
+ranks:
+  - id: owner
+    permission: "intertime.bar.rank.owner"
+    display: "&c&lOWNER"
+    color: RED
+  - id: admin
+    permission: "intertime.bar.rank.admin"
+    display: "&4&lADMIN"
+    color: RED
+  - id: moder
+    permission: "intertime.bar.rank.moder"
+    display: "&9&lMODER"
+    color: AQUA
+  - id: vip
+    permission: "intertime.bar.rank.vip"
+    display: "&6&lVIP"
+    color: YELLOW
+  - id: player
+    permission: ""
+    display: "&7Гравець"
+    color: GRAY
